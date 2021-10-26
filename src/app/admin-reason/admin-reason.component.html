@@ -1,0 +1,13 @@
+<form class="reason-form" (ngSubmit)="submitReason(reasonForm.value)" #reasonForm="ngForm" name="reasonForm">
+<mat-form-field class="reason-textarea" appearance="outline">
+  <mat-label>Reason</mat-label>
+  <textarea matInput placeholder="Eg. inappropriate content." ngModel name="reason" id="reason">
+
+  </textarea>
+</mat-form-field>
+
+  <button  mat-raised-button color="primary" type="submit"  >
+    submit
+  </button>
+
+</form>

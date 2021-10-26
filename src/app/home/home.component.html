@@ -1,0 +1,15 @@
+<div class="home-container">
+
+  <div class="search-sort-container">
+    <search (searchString)="search($event)"
+            (sortByTime)="getQuestionsByTime()"
+            (sortByVotes)="getQuestionsByUpvotes()"
+            class="search-bar">
+
+    </search>
+  </div>
+
+
+
+<question *ngFor="let question of questions | async" [question]="question" ></question>
+</div>

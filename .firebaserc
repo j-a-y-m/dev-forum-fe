@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "forum-3463f": {
+      "hosting": {
+        "dev-forum": [
+          "forum-3463f"
+        ]
+      }
+    }
+  }
+}

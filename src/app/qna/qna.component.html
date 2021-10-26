@@ -1,0 +1,62 @@
+<div class="container">
+
+  <div class="question-container" *ngIf="data.question" >
+    <div class="vote-container">
+      <!--    <button class="upvote-button"><img src="https://i.ibb.co/gjHt2S8/upvote.png" height="10px" width="auto"></button>-->
+      <!--    <button class="upvote-button"></button>-->
+
+      <img src="https://i.ibb.co/gjHt2S8/upvote.png" height="25px" width="auto" (click)="upvote(data.question)">
+
+      <!--    <mat-card-subtitle>{{question.votes}}</mat-card-subtitle>-->
+      <p class="votes">{{data.question.votes}}</p>
+      <!--    <button class="downvote-button"><img src="https://i.ibb.co/1sk6SmW/downvote.png" height="10px" width="auto"></button>-->
+      <!--    <button class="downvote-button"></button>-->
+
+      <img src="https://i.ibb.co/1sk6SmW/downvote.png" height="25px" width="auto" (click)="downvote(data.question)">
+
+
+    </div>
+    <div class="question-content-container" >
+      <mat-card-title>{{data.question.title}}</mat-card-title>
+      <mat-card-content>
+        <p>
+          <markdown [data]="data.question.content">
+<!--          {{data.question.content}}-->
+            </markdown>
+        </p>
+        </mat-card-content>
+      <div class="question-footer">
+      <span class="tags" *ngFor="let tag of data.question.tags" >
+        {{tag}}
+      </span>
+
+
+        <user [uid]="data.question.createdBy" class="question-user">
+        </user>
+      </div>
+      <admin [contentType]="'questions'"
+             [contentId]="data.question.questionId"
+              [uid]="data.question.createdBy"
+      ></admin>
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+  <mat-card-title>Answers</mat-card-title>
+
+
+  <answer *ngFor="let answer of answers | async" [answer]="answer"></answer>
+
+  <new-answer [questionId]="data.question.questionId">
+
+  </new-answer>
+  <!--<p>{{data.questionId}}</p>-->
+</div>

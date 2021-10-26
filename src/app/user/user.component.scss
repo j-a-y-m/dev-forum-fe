@@ -1,0 +1,35 @@
+.user-container{
+  border : 1px solid #ccc ;
+  border-radius: 6px ;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  //align-content: end;
+  padding: 3px;
+}
+
+
+.user-text-container{
+  margin-left: 3px;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.user-text-container>p{
+margin: 0px;
+font-size: 10px;
+}
+
+.user-text-container>mat-card-title{
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+img{
+  align-self: center;
+  height: 14px;
+  width: auto;
+}

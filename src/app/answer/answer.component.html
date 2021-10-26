@@ -1,0 +1,41 @@
+<div class="answer-container" *ngIf="answer" >
+  <div class="vote-container">
+    <!--    <button class="upvote-button"><img src="https://i.ibb.co/gjHt2S8/upvote.png" height="10px" width="auto"></button>-->
+    <!--    <button class="upvote-button"></button>-->
+
+    <img matRipple src="https://i.ibb.co/gjHt2S8/upvote.png" height="25px" width="auto" (click)="upvote(answer)">
+
+    <!--    <mat-card-subtitle>{{answer.votes}}</mat-card-subtitle>-->
+    <p class="votes">{{answer.votes}}</p>
+    <!--    <button class="downvote-button"><img src="https://i.ibb.co/1sk6SmW/downvote.png" height="10px" width="auto"></button>-->
+    <!--    <button class="downvote-button"></button>-->
+
+    <img matRipple src="https://i.ibb.co/1sk6SmW/downvote.png" height="25px" width="auto" (click)="downvote(answer)" >
+
+
+  </div>
+    <div class="answer-content-container" >
+      <user [uid]="answer.postedBy">
+      </user>
+    <mat-card-content>
+      <p>
+        <markdown [data]="answer.content">
+          <!--          {{data.question.content}}-->
+        </markdown>
+<!--        {{answer.content}}-->
+      </p>
+      </mat-card-content>
+    <div class="answer-footer">
+      <admin [contentType]="'answers'"
+             [contentId]="answer.answerId"
+             [uid]="answer.postedBy">
+      </admin>
+
+
+    </div>
+
+
+
+  </div>
+</div>
+

@@ -1,0 +1,14 @@
+
+  <form (ngSubmit)="submitAnswer(answerForm.value)" #answerForm="ngForm" name="answerForm">
+    <div class="new-answer-container">
+<!--  <mat-form-field appearance="fill" class="write-answer">-->
+<!--    <mat-label>Write your answer</mat-label>-->
+      <label for="answer">Write your answer</label>
+    <textarea matInput ngModel name="answer" id="answer"></textarea>
+<!--  </mat-form-field>-->
+    <button  mat-raised-button color="primary" type="submit"  >
+      submit
+    </button>
+    </div>
+  </form>
+

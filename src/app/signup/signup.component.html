@@ -1,0 +1,34 @@
+
+<mat-card class="signup-card">
+  <form (ngSubmit)="signup(signupForm.value)" #signupForm="ngForm" name="signupForm">
+  <div class="cred-input">
+    <mat-form-field   appearance="outline" hideRequiredMarker>
+      <mat-label>E-mail</mat-label>
+      <input ngModel name="email" matInput type="email" required placeholder="enter email">
+      <!--          <mat-hint>Hint</mat-hint>-->
+    </mat-form-field>
+  </div>
+
+<!--  <div class="cred-input">-->
+<!--        <mat-form-field   appearance="outline" hideRequiredMarker>-->
+<!--          <mat-label>Username</mat-label>-->
+<!--          <input ngModel name="username" matInput required placeholder="enter username">-->
+<!--&lt;!&ndash;          <mat-hint>Hint</mat-hint>&ndash;&gt;-->
+<!--        </mat-form-field>-->
+<!--  </div>-->
+
+  <div class="cred-input" >
+    <mat-form-field   appearance="outline" hideRequiredMarker>
+      <mat-label>Password</mat-label>
+      <input ngModel name="password" required type="password" matInput placeholder="enter password">
+      <!--          <mat-hint>Hint</mat-hint>-->
+    </mat-form-field>
+  </div>
+    <div class="cred-input" >
+        <button  mat-raised-button color="primary" type="submit"  >
+          SignUp
+        </button>
+    </div>
+  </form>
+</mat-card>
+

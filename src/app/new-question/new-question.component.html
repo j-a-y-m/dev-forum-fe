@@ -1,0 +1,47 @@
+<div id="component">
+<form (ngSubmit)="submit(signupForm.value)" #signupForm="ngForm" name="signupForm" class="container">
+<H1 class="heading">
+  Post your question
+</H1>
+      <div class="input-container">
+  <div class="input">
+    <mat-form-field class="input"  appearance="outline" hideRequiredMarker>
+      <mat-label>Title</mat-label>
+      <input  ngModel name="title" matInput type="text"  placeholder="enter title">
+      <!--          <mat-hint>Hint</mat-hint>-->
+    </mat-form-field>
+  </div>
+
+  <div class="content" style="height: 100%">
+    <mat-form-field style="height: 100%" class=" content-input"  appearance="outline" hideRequiredMarker>
+      <mat-label style="height: 100%">Content</mat-label>
+      <textarea wrap="hard" rows="15" style="height: 100%" class="content-input-textarea" ngModel name="content" matInput type="text"  placeholder="explain your issue">
+
+      </textarea>
+      <!--          <mat-hint>Hint</mat-hint>-->
+    </mat-form-field>
+  </div>
+
+  <div class="input">
+    <mat-form-field class="input"  appearance="outline" hideRequiredMarker>
+      <mat-label>Tags</mat-label>
+      <input  ngModel name="tags" matInput type="text"  placeholder="eg: python,java,sql,angular,algorithms">
+      <!--          <mat-hint>Hint</mat-hint>-->
+    </mat-form-field>
+  </div>
+  </div>
+  <span class="button-container" >
+    <button class="buttons" mat-raised-button mat-dialog-close>
+      cancel
+    </button>
+
+
+    <button class="buttons" mat-raised-button color="primary" type="submit"  >
+      Submit
+    </button>
+
+
+  </span>
+
+</form>
+</div>

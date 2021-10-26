@@ -1,0 +1,8 @@
+<div  class="user-container "  *ngIf="user && (user | async ) as userValue">
+  <img mat-card-avatar src="https://i.ibb.co/C6hSmMg/user.png">
+  <div class="user-text-container">
+  <p>{{userValue.displayName.concat(" ")}}  </p>
+    <p>  </p>
+<!--  <p>{{". "}} score:{{userValue.votes}}</p>-->
+  </div>
+</div>
