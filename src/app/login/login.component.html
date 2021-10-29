@@ -1,5 +1,5 @@
 
-<mat-card class="login-card">
+<div [ngClass]="{'login-card':!dialogRef}" >
   <form (ngSubmit)="login(loginForm.value)" #loginForm="ngForm" name="loginForm">
     <div class="cred-input">
       <mat-form-field   appearance="outline" hideRequiredMarker>
@@ -31,4 +31,4 @@
     </div>
   </form>
   <a></a>
-</mat-card>
+</div>

@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {AuthService} from "./auth.service";
 import {AngularFireAuth} from "@angular/fire/auth";
 import {mergeMap} from "rxjs/operators";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthInterceptorService implements HttpInterceptor{
 
    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     //var newReq = req ;
-    if(req.url.includes("http://localhost:3000"))
+    if(req.url.includes(environment.baseUrl))
     {
       console.log("interceptor") ;
 

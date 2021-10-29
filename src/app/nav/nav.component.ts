@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/auth";
 import {Route, Router} from "@angular/router";
 import firebase from "firebase";
@@ -10,6 +10,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {MatDialog} from "@angular/material/dialog";
 import {NewQuestionComponent} from "../new-question/new-question.component";
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'nav',
@@ -30,6 +31,10 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  login(){
+    this.matDialog.open(LoginComponent);
+  }
+
    logout()
   {
 
@@ -40,7 +45,6 @@ export class NavComponent implements OnInit {
     this.auth.signOut().then(()=>{
       location.reload();
       this.router.navigate(["login"]).then(()=>{
-        console.log("logout");
         location.reload();});
     }) ;
 

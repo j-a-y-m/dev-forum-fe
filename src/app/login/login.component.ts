@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import {SignupService} from "../signup/signup.service";
 import {Router} from "@angular/router";
 import {LoginService} from "./login.service";
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'login',
@@ -12,26 +13,19 @@ export class LoginComponent implements OnInit {
 
   public authStatus : any ;
 
-  constructor(private loginService : LoginService , private router : Router) { }
+  constructor(private loginService : LoginService , private router : Router, @Optional() public dialogRef?: MatDialogRef<LoginComponent>) { }
 
   ngOnInit(): void {
 
     var router = this.router ;
     this.authStatus = this.loginService.onAuth ;
-    this.loginService.onAuth.subscribe({
-
-      next(auth)
-      {
-        //authStatus = auth ;
-        if(auth)
+    this.loginService.onAuth.subscribe((auth)=>{
+      if(auth)
         {
+          this.dialogRef?.close();
           router.navigate(['home']);
         }
-      },
-      error(e)
-      {
 
-      }
     })
   }
 

@@ -22,4 +22,7 @@
   <button class="entities" mat-flat-button (click)="logout()" *ngIf="authStatus | async">
     Logout
   </button>
+  <button class="entities" mat-flat-button (click)="login()" *ngIf="!(authStatus | async)">
+    Login
+  </button>
 </div>

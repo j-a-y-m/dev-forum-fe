@@ -1,11 +1,23 @@
 
+:host{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .login-card
 {
   //position: absolute;
-  margin: auto;
+  margin: 20% auto;
   //margin-top: 10%;
-  height: 30vw;
-  width: 30vw;
+  height: max-content;
+  width: max-content;
+  // padding: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: rgba(9, 9, 9, 0.1) 0px 0px 0px 1px;
+
 }
 
 .cred-input
@@ -14,6 +26,24 @@
   margin: auto;
   margin-top: 20px;
   text-align: center;
+  margin: 20px 10vw;
   //css layout center the divs
 
+}
+
+@media screen and (max-width: 500px) {
+  .login-card
+  {
+    //position: absolute;
+    margin: 20% 10%;
+    //margin-top: 10%;
+    height: 100%;
+    width: 100%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: rgba(9, 9, 9, 0.1) 0px 0px 0px 1px;
+  
+  }
 }

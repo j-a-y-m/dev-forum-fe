@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl : "http://localhost:3000",
+  baseUrl : "https://forum-3463f.web.app",
 
   firebaseConfig : {
     apiKey: "AIzaSyCLePpHCTklcihYLOA2D5EwzevF-XqXvzA",
