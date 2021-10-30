@@ -40,7 +40,7 @@ export class SignupService {
         var body = {
           idToken : idToken
                 }
-        http.post('http://localhost:3000/signup',body).subscribe(
+        http.post(environment.baseUrl+'/signup',body).subscribe(
                 {
                   next(e)
                   {
@@ -50,37 +50,6 @@ export class SignupService {
               );
       }
 
-      // console.log(environment.baseUrl+"/signup") ;
-     // var http  = this.http ;
-      // this.auth.currentUser.then(async (user)=>{
-      //
-      //       var idToken = await user?.getIdToken(true) ;
-      //   if(idToken!=null)
-      //   {
-      //
-      //     var body = {
-      //         idToken,
-      //       }
-      //       http.post('http://localhost:3000/signup',body).subscribe(
-      //         {
-      //           next(e)
-      //           {
-      //               console.log(e);
-      //           }
-      //         }
-      //       );
-      //       console.log(idToken) ;
-      //
-      //     }
-      //     else
-      //     {
-      //       console.log("not authenticated") ;
-      //     }
-      //   }).catch((e)=>
-      // {
-      //
-      //   console.log(e) ;
-      // })
 
       }
       catch (e)

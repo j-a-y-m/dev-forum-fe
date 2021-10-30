@@ -5,14 +5,16 @@
       <!--    <button class="upvote-button"><img src="https://i.ibb.co/gjHt2S8/upvote.png" height="10px" width="auto"></button>-->
       <!--    <button class="upvote-button"></button>-->
 
-      <img src="https://i.ibb.co/gjHt2S8/upvote.png" height="25px" width="auto" (click)="upvote(data.question)">
+      <!-- <img src="https://i.ibb.co/gjHt2S8/upvote.png" height="25px" width="auto" (click)="upvote(data.question)"> -->
+      <img src="assets/vote/upvote_orange.svg" height="25px" width="auto" (click)="upvote(data.question)">
 
       <!--    <mat-card-subtitle>{{question.votes}}</mat-card-subtitle>-->
       <p class="votes">{{data.question.votes}}</p>
       <!--    <button class="downvote-button"><img src="https://i.ibb.co/1sk6SmW/downvote.png" height="10px" width="auto"></button>-->
       <!--    <button class="downvote-button"></button>-->
 
-      <img src="https://i.ibb.co/1sk6SmW/downvote.png" height="25px" width="auto" (click)="downvote(data.question)">
+      <!-- <img src="https://i.ibb.co/1sk6SmW/downvote.png" height="25px" width="auto" (click)="downvote(data.question)"> -->
+      <img src="assets/vote/downvote_purple.svg" height="25px" width="auto" (click)="downvote(data.question)">
 
 
     </div>
