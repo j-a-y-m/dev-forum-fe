@@ -23,3 +23,7 @@ markdown {
 .mat-button, .mat-icon-button, .mat-stroked-button {
     color:  #3e3e3e;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #6e6e6e;
+}

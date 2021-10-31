@@ -1,5 +1,6 @@
 :host{
   background-color: #efefef57;
+  width: 100%;
 }
 .home-container{
   width: 100%;
@@ -38,4 +39,20 @@
 
 mat-icon{
   font-size: 18px;
+}
+
+.questions-loading-spinner{
+  width: 65%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 500px){
+  .questions-loading-spinner{
+    width: 80%;
+    height: 100vh;
+  }
 }

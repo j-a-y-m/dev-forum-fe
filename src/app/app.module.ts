@@ -40,6 +40,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { SearchComponent } from './search/search.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MarkdownModule} from "ngx-markdown";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,9 @@ import {MarkdownModule} from "ngx-markdown";
         MatDividerModule,
         MatButtonToggleModule,
         MatAutocompleteModule,
-        MarkdownModule.forRoot()
+        MarkdownModule.forRoot(),
+        MatProgressSpinnerModule,
+
 
     ],
   providers: [  {

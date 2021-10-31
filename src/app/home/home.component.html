@@ -10,6 +10,9 @@
   </div>
 
 
+<div class="questions-loading-spinner" *ngIf="!(questions | async)">
+  <mat-spinner  ></mat-spinner>
+</div>
 
 <question *ngFor="let question of questions | async" [question]="question" ></question>
 </div>
