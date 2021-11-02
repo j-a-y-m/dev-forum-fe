@@ -23,11 +23,12 @@ export class NewQuestionComponent implements OnInit {
 
   submit(formValues : any)
   {
-    console.log("new-question "+formValues.content)
-    var router = this.router ;
+    // console.log("new-question "+formValues.content)
     if (this.isEmpty(formValues.title)||this.isEmpty(formValues.content)||this.isEmpty(formValues.tags))
     {
-      this._snackBar.open('Please fill all the details!',undefined, {
+      this._snackBar.open('Please fill all the details!',"OK", {
+        horizontalPosition: 'end',
+        verticalPosition: 'bottom',
         duration: 3000
       });
     }else
@@ -36,16 +37,16 @@ export class NewQuestionComponent implements OnInit {
                                         formValues.content,
                                         formValues.tags).subscribe({
         next : value => {
-          this._snackBar.open("question posted!",undefined, {
-            duration: 3000
-          });
-          console.log(value)
+          // this._snackBar.open("question posted!",undefined, {
+          //   duration: 3000
+          // });
+          // console.log(value)
         this.dialogRef.close();
         },
         error : err => {
-          this._snackBar.open(err.message,undefined, {
-            duration: 3000
-          });
+          // this._snackBar.open(err.message,undefined, {
+          //   duration: 3000
+          // });
         }
       })
     }

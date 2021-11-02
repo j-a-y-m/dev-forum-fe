@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {concat, Observable} from "rxjs";
+import {concat, Observable, Subject} from "rxjs";
 
 
 @Injectable({
@@ -30,52 +30,15 @@ export class LoginService {
     subscriber.next()
   }))
   //async signUp(email : string, username : string, password : string) {
-  async login(email : string, password : string) {
-    try {
-      await this.auth.signInWithEmailAndPassword(email,password) ;
-      // console.log(environment.baseUrl+"/signup") ;
-      var http  = this.http ;
-      // this.auth.authState.subscribe({
-      //   async next(user)
-      //   {
-      //     if(user!=null)
-      //     {
-      //
-      //       var idToken = await user.getIdToken() ;
-      //       var body = {
-      //         idToken,
-      //         "uid" : user.uid
-      //       }
-      //       http.post('http://localhost:3000/signup',body).subscribe(
-      //         {
-      //           next(e)
-      //           {
-      //             console.log(e);
-      //           }
-      //         }
-      //       );
-      //       user.getIdToken().then((id)=>console.log(id) );
-      //
-      //     }
-      //     else
-      //     {
-      //       console.log("not authenticated") ;
-      //
-      //     }
-      //   },
-      //   error(e)
-      //   {
-      //
-      //     console.log(e) ;
-      //   }
-      // })
-      //
-      // ;
+  login(email : string, password : string) : Subject<string> {
+      let result = new Subject<string>()
+      this.auth.signInWithEmailAndPassword(email,password).then((res)=>{
+      }).catch((err)=>{
+        let errorMsg = err.code.slice(err.code.indexOf('/')+1).replaceAll('-',' ')
+        result.next(errorMsg);
+      }) ;
+      return result ;
 
-    }catch (e)
-    {
-      console.log(e);
-    }
 
 
 

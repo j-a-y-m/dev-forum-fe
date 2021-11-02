@@ -69,12 +69,16 @@ export class AdminComponent implements OnInit, OnChanges {
           console.log(this.contentId);
           // this.matDialog.open(NewQuestionComponent);
           this.adminService.deleteContent(this.contentType,this.contentId,reason).subscribe({
-              next: res => {this._snackBar.open('deleted',undefined, {
-                duration: 3000
-              }); },
-              error: err => {this._snackBar.open(err.message,undefined, {
-                duration: 3000
-              });}
+              next: res => {
+              //   this._snackBar.open('deleted',undefined, {
+              //   duration: 3000
+              // }); 
+            },
+              error: err => {
+              //   this._snackBar.open(err.message,undefined, {
+              //   duration: 3000
+              // });
+            }
             }
           );
         }
@@ -93,14 +97,14 @@ export class AdminComponent implements OnInit, OnChanges {
         if (this.uid) {
           this.adminService.banUser(this.uid, reason).subscribe({
               next: res => {
-                this._snackBar.open('user banned', undefined, {
-                  duration: 3000
-                });
+                // this._snackBar.open('user banned', undefined, {
+                //   duration: 3000
+                // });
               },
               error: err => {
-                this._snackBar.open(err.message, undefined, {
-                  duration: 3000
-                });
+                // this._snackBar.open(err.message, undefined, {
+                //   duration: 3000
+                // });
               }
             }
           );
