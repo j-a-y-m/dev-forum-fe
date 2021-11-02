@@ -22,6 +22,9 @@
   <button class="entities" mat-stroked-button  (click)="logout()" *ngIf="authStatus | async">
     Logout
   </button>
+  <button class="entities" mat-stroked-button  (click)="signUp()" *ngIf="!(authStatus | async)">
+    SignUp
+  </button>
   <button class="entities" mat-stroked-button  (click)="login()" *ngIf="!(authStatus | async)">
     Login
   </button>

@@ -51,6 +51,11 @@ export class NavComponent implements OnInit {
 
   }
 
+  signUp()
+  {
+    this.router.navigate(["signup"])
+  }
+
   askQuestion()
   {
     this.matDialog.open(NewQuestionComponent);
