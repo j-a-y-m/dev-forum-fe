@@ -1,4 +1,3 @@
-<div id="component">
 <form (ngSubmit)="submit(signupForm.value)" #signupForm="ngForm" name="signupForm" class="container">
 <H1 class="heading">
   Post your question
@@ -12,10 +11,10 @@
     </mat-form-field>
   </div>
 
-  <div class="content" style="height: 100%">
-    <mat-form-field style="height: 100%" class=" content-input"  appearance="outline" hideRequiredMarker>
-      <mat-label style="height: 100%">Content</mat-label>
-      <textarea wrap="hard" rows="15" style="height: 100%" class="content-input-textarea" ngModel name="content" matInput type="text"  placeholder="explain your issue">
+  <div class="content">
+    <mat-form-field class=" content-input"  appearance="outline" hideRequiredMarker>
+      <mat-label >Content</mat-label>
+      <textarea wrap="hard"  class="content-input-textarea" ngModel name="content" matInput type="text"  placeholder="explain your issue">
 
       </textarea>
       <!--          <mat-hint>Hint</mat-hint>-->
@@ -44,4 +43,3 @@
   </span>
 
 </form>
-</div>

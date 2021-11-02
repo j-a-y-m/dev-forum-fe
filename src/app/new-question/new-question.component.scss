@@ -1,7 +1,9 @@
-#component{
+:host{
   text-align: center;
+  display: flex;
+  flex-direction: column;
   width: 60vw;
-  height: 40vw;
+  // height: 80vh ;
 
 }
 
@@ -26,11 +28,9 @@
 }
 //
 .content{
-  //height: 60%;
   margin: 3px;
   width: 100%;
-  height: 200%;
-  flex-grow: 3;
+  height: 100%;
   align-self: stretch;
 }
 
@@ -42,7 +42,7 @@
 .content-input-textarea{
   //height: 100%;
   min-height: 100%;
-
+  height: 320px;
 }
 
 
@@ -64,3 +64,33 @@
   font-size: 29px;
   align-self: start;
 }
+
+@media (min-width : 1450px)
+{
+  .content-input-textarea{
+    height: 410px;
+  }
+}
+
+@media (max-width : 500px)
+{
+  .heading{
+    font-size: 20px;
+  }
+}
+
+@media (max-height : 700px)
+{
+  .content-input-textarea{
+    height: 188px;
+  }
+}
+
+
+
+// @media (max-width : 500px)
+// {
+//   .heading{
+//     font-size: 20px;
+//   }
+// }
