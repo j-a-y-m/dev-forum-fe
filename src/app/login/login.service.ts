@@ -34,8 +34,15 @@ export class LoginService {
       let result = new Subject<string>()
       this.auth.signInWithEmailAndPassword(email,password).then((res)=>{
       }).catch((err)=>{
-        let errorMsg = err.code.slice(err.code.indexOf('/')+1).replaceAll('-',' ')
-        result.next(errorMsg);
+        if(err.code)
+        {
+          let errorMsg = err.code.slice(err.code.indexOf('/')+1).replaceAll('-',' ')
+          result.next(errorMsg);
+        }else
+        {
+          result.next("error occured");
+          console.log(err);
+        }
       }) ;
       return result ;
 

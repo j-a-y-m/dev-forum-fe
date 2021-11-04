@@ -28,13 +28,11 @@ export class AdminComponent implements OnInit, OnChanges {
   constructor(public adminService: AdminService,
               private matDialog : MatDialog,
               private _snackBar: MatSnackBar) {
-    let f=  this.adminService.getToken().pipe(map((token) => {
+    this.adminService.getToken().pipe(map((token) => {
         return  token?.claims.admin ;
       }
-    ));
-
-    f.subscribe({
-      next: value => {console.log(value);this.admin=value}
+    )).subscribe({
+      next: value => {this.admin=value}
     })
   }
 
