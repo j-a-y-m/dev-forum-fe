@@ -4,6 +4,7 @@ import {NewQuestionComponent} from "../new-question/new-question.component";
 import {MatDialog} from "@angular/material/dialog";
 import {QnaComponent} from "../qna/qna.component";
 import {QuestionService} from "./question.service";
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'question',
@@ -45,13 +46,13 @@ export class QuestionComponent implements OnInit,OnChanges {
   }
 
   upvote(question: Question) {
-    this.questionService.upvote(question.questionId).subscribe({
+    this.questionService.upvote(question.questionId).pipe(take(1)).subscribe({
       next : value => {}
     });
   }
 
   downvote(question: Question) {
-    this.questionService.downvote(question.questionId).subscribe({
+    this.questionService.downvote(question.questionId).pipe(take(1)).subscribe({
       next : value => {}
     });
   }

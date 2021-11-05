@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import {Answer} from "../answer/answer.model";
 import {AnswerService} from "../answer/answer.service";
 import {QuestionService} from "../question/question.service";
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-qna',
@@ -31,13 +32,13 @@ export class QnaComponent implements OnInit {
   }
 
   upvote(question: Question) {
-    this.questionService.upvote(question.questionId).subscribe({
+    this.questionService.upvote(question.questionId).pipe(take(1)).subscribe({
       next : value => {console.log(value)}
     });
   }
 
   downvote(question: Question) {
-    this.questionService.downvote(question.questionId).subscribe({
+    this.questionService.downvote(question.questionId).pipe(take(1)).subscribe({
       next : value => {console.log(value)}
     });
   }

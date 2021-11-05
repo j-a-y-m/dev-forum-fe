@@ -4,6 +4,7 @@ import {isHammerJsUsedInTemplate} from "@angular/material/schematics/ng-update/m
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialogRef} from "@angular/material/dialog";
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-question',
@@ -35,7 +36,7 @@ export class NewQuestionComponent implements OnInit {
     { //add snackbar ;
       this.submitQuestionService.submit(formValues.title,
                                         formValues.content,
-                                        formValues.tags).subscribe({
+                                        formValues.tags).pipe(take(1)).subscribe({
         next : value => {
           // this._snackBar.open("question posted!",undefined, {
           //   duration: 3000

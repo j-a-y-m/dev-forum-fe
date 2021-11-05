@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
+import { take } from 'rxjs/operators';
 import {SubmitAnswerService} from "./submit-answer.service";
 
 @Component({
@@ -41,7 +42,7 @@ export class NewAnswerComponent implements OnInit, OnChanges {
       {
         this.submitAnswerService.submit(this.questionId,
           formValues.answer
-        ).subscribe({
+        ).pipe(take(1)).subscribe({
           next : value => {
             // this._snackBar.open("answer posted!",undefined, {
             //   duration: 3000

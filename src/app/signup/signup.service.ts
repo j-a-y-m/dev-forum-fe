@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {concat, Observable, Subject} from "rxjs";
+import { take } from 'rxjs/operators';
 
 
 @Injectable({
@@ -41,7 +42,7 @@ export class SignupService {
           var body = {
             idToken : idToken
                   }
-                  this.http.post(environment.baseUrl+'/signup',body).subscribe(
+                  this.http.post(environment.baseUrl+'/signup',body).pipe(take(1)).subscribe(
                   {
                     next(e)
                     {
