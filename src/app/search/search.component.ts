@@ -8,7 +8,7 @@ import {map, startWith} from "rxjs/operators";
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  myControl = new FormControl();
+  formControl = new FormControl();
 
   @Output()
   searchString = new EventEmitter<string>();
@@ -19,9 +19,11 @@ export class SearchComponent implements OnInit {
   @Output()
   sortByVotes = new EventEmitter<boolean>();
 
+  searchStr : string = "" ;
+
 
   constructor() {
-    this.myControl.valueChanges
+    this.formControl.valueChanges
     //   .pipe(
     //   startWith(''),
     //   map(value => console.log(value))
@@ -44,5 +46,11 @@ export class SearchComponent implements OnInit {
 
   getQuestionsByTime() {
     this.sortByTime.emit(true);
+  }
+
+  onBackSpace()
+  {
+    this.searchString.emit("");
+    // this.formControl.setValue("");
   }
 }

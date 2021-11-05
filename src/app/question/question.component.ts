@@ -46,13 +46,13 @@ export class QuestionComponent implements OnInit,OnChanges {
 
   upvote(question: Question) {
     this.questionService.upvote(question.questionId).subscribe({
-      next : value => {console.log(value)}
+      next : value => {}
     });
   }
 
   downvote(question: Question) {
     this.questionService.downvote(question.questionId).subscribe({
-      next : value => {console.log(value)}
+      next : value => {}
     });
   }
 }
