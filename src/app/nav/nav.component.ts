@@ -11,6 +11,7 @@ import {environment} from "../../environments/environment";
 import {MatDialog} from "@angular/material/dialog";
 import {NewQuestionComponent} from "../new-question/new-question.component";
 import { LoginComponent } from '../login/login.component';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'nav',
@@ -40,15 +41,21 @@ export class NavComponent implements OnInit {
 
     this.auth.authState.subscribe({
     next(user)
-    {console.log(user);}
+    {}
     });
     this.auth.signOut().then(()=>{
-      location.reload();
-      this.router.navigate(["login"]).then(()=>{
-        location.reload();});
+      // location.reload();
+      // this.router.navigate(["login"])//.then(()=>{
+        // location.reload();
+      // });
     }) ;
 
 
+  }
+
+  signUp()
+  {
+    this.router.navigate(["signup"])
   }
 
   askQuestion()
@@ -58,17 +65,11 @@ export class NavComponent implements OnInit {
 
   request()
   {
-    this.http.post(environment.baseUrl+"/test",{test: "this is a post test from client"}).subscribe({
+    this.http.post(environment.baseUrl+"/test",{test: "this is a post test from client"}).pipe(take(1)).subscribe({
       next(){
         console.log("post to /test");
       }
     });
   }
 
-  // makeAdmin() {
-  //   this.http.get(environment.baseUrl+"/test"+"/makemeadmin").subscribe({
-  //     next: (res)=>{
-  //       console.log(res);}
-  //   });
-  // }
 }

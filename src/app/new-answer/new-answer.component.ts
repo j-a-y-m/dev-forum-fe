@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
+import { take } from 'rxjs/operators';
 import {SubmitAnswerService} from "./submit-answer.service";
 
 @Component({
@@ -29,7 +30,9 @@ export class NewAnswerComponent implements OnInit, OnChanges {
     if (NewAnswerComponent.isEmpty(formValues.answer))
     {
 
-      this._snackBar.open('Please write your answer!',undefined, {
+      this._snackBar.open('Please write your answer!',"OK", {
+        horizontalPosition: 'end',
+        verticalPosition: 'bottom',
         duration: 3000
       });
 
@@ -39,16 +42,16 @@ export class NewAnswerComponent implements OnInit, OnChanges {
       {
         this.submitAnswerService.submit(this.questionId,
           formValues.answer
-        ).subscribe({
+        ).pipe(take(1)).subscribe({
           next : value => {
-            this._snackBar.open("answer posted!",undefined, {
-              duration: 3000
-            });
-            console.log(value)},
+            // this._snackBar.open("answer posted!",undefined, {
+            //   duration: 3000
+            // });
+            },
           error : err => {
-            this._snackBar.open(err.message,undefined, {
-              duration: 3000
-            });
+            // this._snackBar.open(err.message,undefined, {
+            //   duration: 3000
+            // });
           }
         });
       }

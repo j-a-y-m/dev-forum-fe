@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {AdminService} from "./admin.service";
-import {map, mergeMap} from "rxjs/operators";
+import {map, mergeMap, take} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {NewQuestionComponent} from "../new-question/new-question.component";
@@ -28,13 +28,11 @@ export class AdminComponent implements OnInit, OnChanges {
   constructor(public adminService: AdminService,
               private matDialog : MatDialog,
               private _snackBar: MatSnackBar) {
-    let f=  this.adminService.getToken().pipe(map((token) => {
+    this.adminService.getToken().pipe(map((token) => {
         return  token?.claims.admin ;
       }
-    ));
-
-    f.subscribe({
-      next: value => {console.log(value);this.admin=value}
+    )).subscribe({
+      next: value => {this.admin=value}
     })
   }
 
@@ -68,13 +66,17 @@ export class AdminComponent implements OnInit, OnChanges {
         if (this.contentType && this.contentId){
           console.log(this.contentId);
           // this.matDialog.open(NewQuestionComponent);
-          this.adminService.deleteContent(this.contentType,this.contentId,reason).subscribe({
-              next: res => {this._snackBar.open('deleted',undefined, {
-                duration: 3000
-              }); },
-              error: err => {this._snackBar.open(err.message,undefined, {
-                duration: 3000
-              });}
+          this.adminService.deleteContent(this.contentType,this.contentId,reason).pipe(take(1)).subscribe({
+              next: res => {
+              //   this._snackBar.open('deleted',undefined, {
+              //   duration: 3000
+              // }); 
+            },
+              error: err => {
+              //   this._snackBar.open(err.message,undefined, {
+              //   duration: 3000
+              // });
+            }
             }
           );
         }
@@ -91,16 +93,16 @@ export class AdminComponent implements OnInit, OnChanges {
       next: data => {
         const reason = data.reason;
         if (this.uid) {
-          this.adminService.banUser(this.uid, reason).subscribe({
+          this.adminService.banUser(this.uid, reason).pipe(take(1)).subscribe({
               next: res => {
-                this._snackBar.open('user banned', undefined, {
-                  duration: 3000
-                });
+                // this._snackBar.open('user banned', undefined, {
+                //   duration: 3000
+                // });
               },
               error: err => {
-                this._snackBar.open(err.message, undefined, {
-                  duration: 3000
-                });
+                // this._snackBar.open(err.message, undefined, {
+                //   duration: 3000
+                // });
               }
             }
           );

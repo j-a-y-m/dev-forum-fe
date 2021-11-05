@@ -1,4 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { take } from 'rxjs/operators';
 import {Question} from "../question/question.model";
 import {Answer} from "./answer.model";
 import {AnswerService} from "./answer.service";
@@ -25,13 +26,13 @@ export class AnswerComponent implements OnInit,OnChanges {
 
   upvote(answer: Answer) {
     // console.log(answer.answerId);
-    this.answerService.upvote(answer.answerId).subscribe({
+    this.answerService.upvote(answer.answerId).pipe(take(1)).subscribe({
       next : value => {console.log(value)}
     });
   }
 
   downvote(answer: Answer) {
-    this.answerService.downvote(answer.answerId).subscribe({
+    this.answerService.downvote(answer.answerId).pipe(take(1)).subscribe({
       next : value => {console.log(value)}
     });
   }

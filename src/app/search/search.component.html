@@ -1,15 +1,11 @@
 <form class="search-form col col-12 justify-content-center">
   <input type="text"
          placeholder="Search"
-         [formControl]="myControl"
+         [formControl]="formControl"
+         (keydown.backspace)="onBackSpace()"
+         [(ngModel)]="searchStr"
          >
     <mat-icon class="icon-search" >search</mat-icon>
-<!--[matAutocomplete]="auto"-->
-<!--  <mat-autocomplete  #auto="matAutocomplete">-->
-<!--    <mat-option *ngFor="let city of filteredCities | async" [value]="city.name">-->
-<!--      {{city.name}}-->
-<!--    </mat-option>-->
-<!--  </mat-autocomplete>-->
 </form>
 <mat-button-toggle-group class="sort-container" #group="matButtonToggleGroup">
   <mat-button-toggle value="left" aria-label="Text align left"  (click)="getQuestionsByUpvotes()">

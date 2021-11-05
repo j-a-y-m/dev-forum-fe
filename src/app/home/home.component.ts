@@ -44,14 +44,14 @@ export class HomeComponent implements OnInit {
       this.questions = this.questions.pipe(map(
       (questions)=>{
         return questions.filter(question=>{
-          if(question.content.search("totally") !== -1)
+          var sanitizedString = searchString.replace(/[^\w\s]/gi, '');//replace everything that is not(alphanumeric character from the basic Latin alphabet, including the underscore. Equivalent to [A-Za-z0-9_]).to exclude regex characters from string.search
+          if ((question.title.search(sanitizedString) !== -1) ||
+              (question.content.search(sanitizedString) !== -1) ||
+              question.tags.some((tag)=>{
+              return tag.search(sanitizedString) !== -1 ? true : false
+              })
+          )
           {
-            console.log("filter "+question.content);
-          }
-
-          if ((question.title.search(searchString) !== -1) || (question.content.search(searchString) !== -1))
-          {
-            console.log(question);
             return true
           }else {
             return false

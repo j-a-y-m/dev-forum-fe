@@ -28,6 +28,12 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; 
 }
 
 .question-footer{
@@ -84,9 +90,7 @@ align-self: flex-end;
 
 //
 
-answer{
-  align-self: flex-end;
-}
+
 
 mat-card-title{
 margin: 6px;
@@ -96,3 +100,10 @@ p{
   white-space: pre-wrap;
 }
 
+
+@media (max-width:768px)
+{
+  .container{
+    width: 100%;
+  }
+}

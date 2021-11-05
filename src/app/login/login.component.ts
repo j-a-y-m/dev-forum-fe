@@ -3,6 +3,7 @@ import {SignupService} from "../signup/signup.service";
 import {Router} from "@angular/router";
 import {LoginService} from "./login.service";
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   public authStatus : any ;
 
-  constructor(private loginService : LoginService , private router : Router, @Optional() public dialogRef?: MatDialogRef<LoginComponent>) { }
+  constructor(private loginService : LoginService , private router : Router, private snackbar: MatSnackBar, @Optional() public dialogRef?: MatDialogRef<LoginComponent>) { }
 
   ngOnInit(): void {
 
@@ -31,6 +32,12 @@ export class LoginComponent implements OnInit {
 
   login(formValues : any)
   {
-    this.loginService.login(formValues.email,formValues.password) ;
+    this.loginService.login(formValues.email,formValues.password).subscribe((errorMsg)=>{
+      this.snackbar.open(errorMsg, "OK", {
+        horizontalPosition: 'end',
+        verticalPosition: 'bottom',
+        duration: 3000
+      });
+    }) ;
   }
 }

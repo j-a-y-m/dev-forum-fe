@@ -11,18 +11,21 @@
 <!--    <mat-icon>add</mat-icon>-->
 <!--    admin-->
 <!--  </button>-->
-  <button mat-icon-button color="basic" *ngIf="(authStatus | async) && inbox.menu" [matMenuTriggerFor]="inbox.menu">
+  <button mat-icon-button  *ngIf="(authStatus | async) && inbox.menu" [matMenuTriggerFor]="inbox.menu">
     <mat-icon>mail</mat-icon>
   </button>
   <inbox #inbox=menuOfInbox ></inbox>
-  <button class="entities" mat-flat-button (click)="askQuestion()" *ngIf="authStatus | async">
+  <button class="entities" mat-stroked-button  (click)="askQuestion()" *ngIf="authStatus | async">
     <mat-icon>add</mat-icon>
     Ask Question
   </button>
-  <button class="entities" mat-flat-button (click)="logout()" *ngIf="authStatus | async">
+  <button class="entities" mat-stroked-button  (click)="logout()" *ngIf="authStatus | async">
     Logout
   </button>
-  <button class="entities" mat-flat-button (click)="login()" *ngIf="!(authStatus | async)">
+  <button class="entities" mat-stroked-button  (click)="signUp()" *ngIf="!(authStatus | async)">
+    SignUp
+  </button>
+  <button class="entities" mat-stroked-button  (click)="login()" *ngIf="!(authStatus | async)">
     Login
   </button>
 </div>

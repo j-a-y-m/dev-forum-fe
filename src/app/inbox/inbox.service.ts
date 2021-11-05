@@ -32,8 +32,8 @@ export class InboxService {
       return user?.uid
     })).pipe(mergeMap((uid)=>{
 
-        return this.firestore.collection("users",ref => ref.orderBy("time","desc"))
-          .doc(uid).collection<Inbox>("inbox").valueChanges();
+        return this.firestore.collection("users")
+          .doc(uid).collection<Inbox>("inbox",ref => ref.orderBy("time","desc")).valueChanges();
       }));
 
 

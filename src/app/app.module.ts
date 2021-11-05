@@ -40,6 +40,11 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { SearchComponent } from './search/search.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MarkdownModule} from "ngx-markdown";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { LoadingInterceptorService } from './loading-interceptor.service';
+import { ResponseInterceptorService } from './response-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -80,14 +85,28 @@ import {MarkdownModule} from "ngx-markdown";
         MatDividerModule,
         MatButtonToggleModule,
         MatAutocompleteModule,
-        MarkdownModule.forRoot()
+        MarkdownModule.forRoot(),
+        MatProgressSpinnerModule,
+        // LoadingBarHttpClientModule,
+        LoadingBarModule
 
     ],
   providers: [  {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true
-  }],
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingInterceptorService,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ResponseInterceptorService,
+    multi: true
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
